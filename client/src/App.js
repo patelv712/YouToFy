@@ -1,32 +1,11 @@
-import React, {useEffect, useState} from 'react'
+import "bootstrap/dist/css/bootstrap.min.css"
+import Login from "./Login"
+import Dashboard from "./Dashboard"
+
+const code = new URLSearchParams(window.location.search).get("code")
 
 function App() {
-
-  const [backendData, setBackendData] = useState([{}])
-
-  useEffect(() => {
-    fetch("/api").then(
-      response => response.json()
-    ).then(
-      data => {
-        setBackendData(data)
-      }
-    )
-    
-  }, [])
-
-  return (
-    <div>
-      <button>
-        Login With Google
-      </button>
-      <button>
-        Login With Spotify
-      </button>
-
-    </div>
-  )
+  return code ? <Dashboard code= {code} /> : <Login />
 }
 
 export default App
-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
